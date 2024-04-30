@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .p-el {
+    @apply pl-3 sm:pl-5;
+  }
+  .flex-center {
+    @apply flex justify-center;
+  }
+  .text-el {
+    @apply text-xs sm:text-lg;
+  }
+}
