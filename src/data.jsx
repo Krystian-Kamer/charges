@@ -1,24 +1,24 @@
 export const listOfCharges = [
   {
-    name: 'Czynsz Pabianicka',
+    name: 'Czynsz ',
   },
   {
-    name: 'Prąd Pabianicka',
+    name: 'Prąd ',
   },
   {
-    name: 'Czynsz Piotrkowska',
+    name: 'Czynsz 2',
   },
   {
-    name: 'Prąd Piotrkowska',
+    name: 'Prąd 2',
   },
   {
     name: 'Gaz',
   },
   {
-    name: 'Toya Piotrkkowska',
+    name: 'Toya 1',
   },
   {
-    name: 'Toya Pabianicka',
+    name: 'Toya 2',
   },
   {
     name: 'iPhone',
