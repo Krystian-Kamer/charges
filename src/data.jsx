@@ -1,9 +1,9 @@
 export const listOfCharges = [
   {
-    name: 'Czynsz ',
+    name: 'Czynsz',
   },
   {
-    name: 'Prąd ',
+    name: 'Prąd',
   },
   {
     name: 'Czynsz 2',

@@ -1,8 +1,8 @@
 import CurrentStatus from './CurrentStatus';
-const CheckedList = ({ listOfCharges }) => {
+const CheckedList = ({ list }) => {
   return (
     <>
-      {listOfCharges.map((charge, index) => {
+      {list.map((charge, index) => {
         return <CurrentStatus key={index} />;
       })}
     </>

@@ -1,7 +1,7 @@
-const Charges = ({ listOfCharges }) => {
+const Charges = ({ list }) => {
   return (
     <>
-      {listOfCharges.map((charge, index) => {
+      {list.map((charge, index) => {
         return (
           <div className='py-1 p-el border text-el border-black' key={index}>
             {charge.name}

@@ -14,6 +14,7 @@ const App = () => {
   const [actualWidth, setActualWidth] = useState(window.innerWidth);
   const [slidesPerView, setSlidesPerView] = useState(2);
   const [isModalActive, setIsModalActive] = useState(false);
+  const [list, setList] = useState(listOfCharges);
 
   useEffect(() => {
     const changeSlidesPerView = () => {
@@ -41,27 +42,21 @@ const App = () => {
       }
     };
     changeSlidesPerView();
-
     const handleResize = () => {
       setActualWidth(window.innerWidth);
     };
-
     window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, [actualWidth]);
 
   return (
-    <section className='relative mb-24 w-screen max-w-5xl px-5 md:px-16'>
+    <section className='relative mb-24 w-screen max-w-5xl px-5 md:px-16 '>
       <div className='flex-center font-bold uppercase'>
         <h1 className='mb-4 text-lg'>Rachunki</h1>
       </div>
-      <div className='flex border-2 rounded-xl font-mono uppercase font-bold border-black overflow-hidden shadow-2xl'>
+      <div className='flex border-2 rounded-xl font-mono uppercase font-bold border-black overflow-hidden shadow-[5px_10px_15px_10px_rgba(0,0,0,0.5)]'>
         <div className='w-full sm:w-1/3'>
           <h2 className='p-el py-2 border-b border-black'>Opłaty</h2>
-          <Charges listOfCharges={listOfCharges} />
+          <Charges list={list} />
         </div>
         <Swiper
           className='w-full sm:w-2/3 swiper_container'
@@ -76,7 +71,7 @@ const App = () => {
                   <div className='flex-center w-full  border-b border-black'>
                     <p className='py-2'>{month}</p>
                   </div>
-                  <CheckedList listOfCharges={listOfCharges} />
+                  <CheckedList list={list} />
                 </div>
               </SwiperSlide>
             );
@@ -87,7 +82,13 @@ const App = () => {
         setIsModalActive={setIsModalActive}
         isModalActive={isModalActive}
       />
-      {isModalActive && <Modal listOfCharges={listOfCharges} />}
+      {isModalActive && (
+        <Modal
+          list={list}
+          setList={setList}
+          setIsModalActive={setIsModalActive}
+        />
+      )}
     </section>
   );
 };
