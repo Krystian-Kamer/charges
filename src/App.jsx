@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { listOfCharges, months } from './data';
 import Charges from './components/Charges';
 import HandleCharges from './components/HandleCharges';
@@ -71,7 +68,7 @@ const App = () => {
                   <div className='flex-center w-full  border-b border-black'>
                     <p className='py-2'>{month}</p>
                   </div>
-                  <CheckedList list={list} />
+                  <CheckedList list={list} month={index} setList={setList} />
                 </div>
               </SwiperSlide>
             );

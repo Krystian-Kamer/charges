@@ -1,18 +1,20 @@
-import { useState } from 'react';
-
-const CurrentStatus = () => {
-  const [isPaid, setIsPaid] = useState('x');
+const CurrentStatus = ({ list, setList, index, month }) => {
+  const isPaid = list[index]['paid' + month];
 
   const handleClick = () => {
-    setIsPaid(isPaid === 'ok' ? 'x' : 'ok');
+    const newList = [...list];
+    newList[index]['paid' + month] = !isPaid;
+    setList(newList);
+    console.log(list);
   };
-
   return (
     <button
       className='flex-center items-center py-1 w-full bg-transparent border border-black text-el'
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
     >
-      <p className={isPaid === 'x' ? 'opacity-0' : 'opacity-100'}>{isPaid}</p>
+      <p className={isPaid ? 'opacity-100' : 'opacity-0'}>
+        {isPaid ? 'ok' : 'not ok'}
+      </p>
     </button>
   );
 };

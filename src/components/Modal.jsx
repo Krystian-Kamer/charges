@@ -1,17 +1,33 @@
 import { IoMdAddCircle } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ModalCharges from './ModalCharges';
 
 const Modal = ({ list, setList, setIsModalActive }) => {
-  const [newCharge, setNewCharge] = useState({ name: '' });
+  const emptyCharge = {
+    name: '',
+    paid0: false,
+    paid1: false,
+    paid2: false,
+    paid3: false,
+    paid4: false,
+    paid5: false,
+    paid6: false,
+    paid7: false,
+    paid8: false,
+    paid9: false,
+    paid10: false,
+    paid11: false,
+  };
+
+  const [newCharge, setNewCharge] = useState(emptyCharge);
 
   const addCharge = (e) => {
     if (newCharge.name === '') return;
     e.preventDefault();
     const newList = [...list];
     setList([...newList, newCharge]);
-    setNewCharge({ name: '' });
+    setNewCharge(emptyCharge);
   };
 
   return (
@@ -25,14 +41,30 @@ const Modal = ({ list, setList, setIsModalActive }) => {
       </button>
       <ModalCharges list={list} setList={setList} />
       <div className='flex justify-center'>
-        <p className='capitalize text-el pr-3'>add charge</p>
+        <p className='capitalize text-el pr-3'>Dodaj rachunek</p>
       </div>
       <div className='flex'>
         <input
           type='text'
           className='my-1 text-el bg-transparent border-2 border-black rounded-lg pl-3 focus:outline-none focus:bg-yellow-300'
           value={newCharge.name}
-          onChange={(e) => setNewCharge({ name: e.target.value })}
+          onChange={(e) =>
+            setNewCharge({
+              name: e.target.value,
+              paid0: false,
+              paid1: false,
+              paid2: false,
+              paid3: false,
+              paid4: false,
+              paid5: false,
+              paid6: false,
+              paid7: false,
+              paid8: false,
+              paid9: false,
+              paid10: false,
+              paid11: false,
+            })
+          }
         />
         <button
           type='button'

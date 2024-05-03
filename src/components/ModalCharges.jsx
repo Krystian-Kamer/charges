@@ -1,15 +1,27 @@
+import { useState } from 'react';
 import { MdDelete } from 'react-icons/md';
 
 const ModalCharges = ({ list, setList }) => {
+  const [renamedCharges, setRenamedCharges] = useState(list);
 
   const deleteCharge = (e, index) => {
     e.preventDefault();
     const newList = [...list];
-    const filteredList = newList.filter((charge, id) => id !== index);
-    return setList(filteredList);
+    const filteredList = newList.filter((charge, id) => {
+      return id !== index;
+    });
+    setList(filteredList);
+    setRenamedCharges(filteredList);
   };
 
-  console.log(list);
+  const changeName = (e, index) => {
+    const newList = [...renamedCharges];
+    const newChargeName = e.target.value;
+    newList[index].name = newChargeName;
+    setRenamedCharges(newList);
+    setList(newList);
+  };
+
   return (
     <>
       {list.map((charge, index) => {
@@ -18,7 +30,8 @@ const ModalCharges = ({ list, setList }) => {
             <input
               type='text'
               className='my-1 text-el bg-transparent border-2 border-black rounded-lg pl-3 focus:outline-none focus:bg-yellow-300'
-              defaultValue={charge.name}
+              value={charge.name}
+              onChange={(e) => changeName(e, index)}
             />
             <button
               onClick={(e) => deleteCharge(e, index)}
