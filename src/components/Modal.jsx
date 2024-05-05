@@ -24,6 +24,7 @@ const Modal = ({ list, setList, setIsModalActive }) => {
   const [newCharge, setNewCharge] = useState(emptyCharge);
 
   const addCharge = (e) => {
+    e.preventDefault()
     if (newCharge.name === '') return;
     e.preventDefault();
     const newList = [...list];
