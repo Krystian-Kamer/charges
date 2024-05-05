@@ -11,7 +11,10 @@ const App = () => {
   const [actualWidth, setActualWidth] = useState(window.innerWidth);
   const [slidesPerView, setSlidesPerView] = useState(2);
   const [isModalActive, setIsModalActive] = useState(false);
-  const [list, setList] = useState(listOfCharges);
+  const [list, setList] = useState(() => {
+    const localList = localStorage.getItem('list');
+    return localList ? JSON.parse(localList) : listOfCharges;
+  });
 
   useEffect(() => {
     const changeSlidesPerView = () => {
@@ -45,9 +48,13 @@ const App = () => {
     window.addEventListener('resize', handleResize);
   }, [actualWidth]);
 
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
+
   return (
     <section className='relative mb-24 w-screen max-w-5xl px-5 md:px-16 '>
-      <div className='flex-center font-bold uppercase'>
+      <div className='flex-center font-bold uppercase '>
         <h1 className='mb-4 text-lg'>Rachunki</h1>
       </div>
       <div className='flex border-2 rounded-xl font-mono uppercase font-bold border-black overflow-hidden shadow-[5px_10px_15px_10px_rgba(0,0,0,0.5)]'>
@@ -56,7 +63,7 @@ const App = () => {
           <Charges list={list} />
         </div>
         <Swiper
-          className='w-full sm:w-2/3 swiper_container'
+          className='w-full sm:w-2/3'
           grabCursor={true}
           spaceBetween={1}
           slidesPerView={slidesPerView}

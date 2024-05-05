@@ -2,6 +2,7 @@ import { IoMdAddCircle } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { useState } from 'react';
 import ModalCharges from './ModalCharges';
+import { toast } from 'react-toastify';
 
 const Modal = ({ list, setList, setIsModalActive }) => {
   const emptyCharge = {
@@ -26,6 +27,7 @@ const Modal = ({ list, setList, setIsModalActive }) => {
     if (newCharge.name === '') return;
     e.preventDefault();
     const newList = [...list];
+    toast.success(`Dodano ${newCharge.name} do opłat`);
     setList([...newList, newCharge]);
     setNewCharge(emptyCharge);
   };

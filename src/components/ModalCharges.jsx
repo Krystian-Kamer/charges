@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MdDelete } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 const ModalCharges = ({ list, setList }) => {
   const [renamedCharges, setRenamedCharges] = useState(list);
@@ -10,6 +11,8 @@ const ModalCharges = ({ list, setList }) => {
     const filteredList = newList.filter((charge, id) => {
       return id !== index;
     });
+    console.log(newList);
+    toast.success(`Usunięto ${newList[index].name} z opłat`);
     setList(filteredList);
     setRenamedCharges(filteredList);
   };
@@ -34,6 +37,7 @@ const ModalCharges = ({ list, setList }) => {
               onChange={(e) => changeName(e, index)}
             />
             <button
+              type='button'
               onClick={(e) => deleteCharge(e, index)}
               className='pl-3 text-lg sm:text-2xl'
             >
